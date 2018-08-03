@@ -9,6 +9,12 @@ import org.apache.hadoop.fs.*;
 import org.junit.Before;
 import org.junit.Test;
 
+
+/**
+ * @program: hadoop
+ * @author: jikai.sun
+ * @create: 2018-07-30
+ **/
 public class HdfsClient {
 
 	FileSystem fs = null;
