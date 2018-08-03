@@ -56,8 +56,10 @@ public class Hdfs {
      */
     public void copyToLocalFile(FileSystem fs) throws IOException {
         //delsrc 代表是否会删除hdfs上面的文件
+        //使用这个方法必须需要添加winutils.exe  windows下编译过的hadoop 配置环境变量
+        fs.copyToLocalFile(new Path("/hadoop"), new Path("C://"));
         //useRawLocalFileSystem 代表是否使用当前系统的FileSystem  当前为Windows的FileSystem
-        fs.copyToLocalFile(false,new Path("/hadoop"), new Path("C://"),true);
+//        fs.copyToLocalFile(false,new Path("/hadoop"), new Path("C://"),true);
         fs.close();
     }
 
