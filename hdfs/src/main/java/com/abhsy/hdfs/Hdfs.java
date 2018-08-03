@@ -49,6 +49,7 @@ public class Hdfs {
 
     public void copyFromLocalFile(FileSystem fs) throws IOException {
         fs.copyFromLocalFile(new Path("D://hadoop-2.6.1//etc//hadoop"), new Path("/"));
+        fs.close();
     }
 
     /**
