@@ -147,7 +147,6 @@ public class HdfsClient {
 	@Test
 	public void testListFiles() throws FileNotFoundException, IllegalArgumentException, IOException {
 
-		// 思考：为什么返回迭代器，而不是List之类的容器
 		RemoteIterator<LocatedFileStatus> listFiles = fs.listFiles(new Path("/"), true);
 
 		while (listFiles.hasNext()) {
