@@ -21,7 +21,10 @@ public class WordCountDriver {
 
     public static void main(String [] args) throws IOException, ClassNotFoundException, InterruptedException {
         Configuration configuration = new Configuration();
-//        configuration.set("fs.defaultFS", "hdfs://hadoop1:9000");
+        configuration.set("fs.defaultFS", "hdfs://hadoop1:9000");
+        configuration.set("mapreduce.framework.name", "yarn");
+        configuration.set("yarn.resourcemanager.hostname", "hadoop1");
+        System.setProperty("HADOOP_USER_NAME", "root");
         Job job = Job.getInstance(configuration);
         //告诉框架，我们的的程序所在jar包的位置
 //        job.setJar("/root/reduce.jar");
@@ -38,8 +41,8 @@ public class WordCountDriver {
         job.setInputFormatClass(TextInputFormat.class);
         job.setOutputFormatClass(TextOutputFormat.class);
         //设置处理文件路径  FileInputFormat要使用reduce包下面的
-        FileInputFormat.setInputPaths(job,new Path("D://input"));
-        FileOutputFormat.setOutputPath(job,new Path("D://output"));
+        FileInputFormat.setInputPaths(job,new Path("/hadoop"));
+        FileOutputFormat.setOutputPath(job,new Path("/output"));
         /**
          * 等待客户端返回是否完成
          */
