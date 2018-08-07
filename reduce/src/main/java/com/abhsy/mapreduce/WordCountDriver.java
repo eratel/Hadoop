@@ -3,13 +3,13 @@ package com.abhsy.mapreduce;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
-import javax.xml.soap.Text;
 import java.io.IOException;
 
 /**
@@ -21,7 +21,7 @@ public class WordCountDriver {
 
     public static void main(String [] args) throws IOException, ClassNotFoundException, InterruptedException {
         Configuration configuration = new Configuration();
-        configuration.set("fs.defaultFS", "hdfs://hadoop1:9000");
+//        configuration.set("fs.defaultFS", "hdfs://hadoop1:9000");
         Job job = Job.getInstance(configuration);
         //告诉框架，我们的的程序所在jar包的位置
 //        job.setJar("/root/reduce.jar");
@@ -38,8 +38,8 @@ public class WordCountDriver {
         job.setInputFormatClass(TextInputFormat.class);
         job.setOutputFormatClass(TextOutputFormat.class);
         //设置处理文件路径  FileInputFormat要使用reduce包下面的
-        FileInputFormat.setInputPaths(job,new Path("/dfs/input"));
-        FileOutputFormat.setOutputPath(job,new Path("/dfs/output"));
+        FileInputFormat.setInputPaths(job,new Path("D://input"));
+        FileOutputFormat.setOutputPath(job,new Path("D://output"));
         /**
          * 等待客户端返回是否完成
          */
