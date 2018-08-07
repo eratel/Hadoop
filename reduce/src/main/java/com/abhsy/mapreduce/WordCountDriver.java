@@ -41,7 +41,7 @@ public class WordCountDriver {
         job.setInputFormatClass(TextInputFormat.class);
         job.setOutputFormatClass(TextOutputFormat.class);
         //设置处理文件路径  FileInputFormat要使用reduce包下面的
-        FileInputFormat.setInputPaths(job,new Path("/hadoop"));
+        FileInputFormat.setInputPaths(job,new Path("/input"));
         FileOutputFormat.setOutputPath(job,new Path("/output"));
         /**
          * 等待客户端返回是否完成
