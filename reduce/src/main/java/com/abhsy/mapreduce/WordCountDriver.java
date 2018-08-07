@@ -22,8 +22,9 @@ public class WordCountDriver {
     public static void main(String [] args) throws IOException, ClassNotFoundException, InterruptedException {
         Configuration configuration = new Configuration();
         configuration.set("fs.defaultFS", "hdfs://hadoop1:9000");
-        configuration.set("mapreduce.framework.name", "yarn");
-        configuration.set("yarn.resourcemanager.hostname", "hadoop1");
+//        配置使用yarn文件管理 如果不配置默认使用本机的
+//        configuration.set("mapreduce.framework.name", "yarn");
+//        configuration.set("yarn.resourcemanager.hostname", "hadoop1");
         System.setProperty("HADOOP_USER_NAME", "root");
         Job job = Job.getInstance(configuration);
         //告诉框架，我们的的程序所在jar包的位置
