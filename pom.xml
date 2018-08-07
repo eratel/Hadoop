@@ -11,6 +11,7 @@
 
     <modules>
         <module>hdfs</module>
+        <module>reduce</module>
     </modules>
 
     <dependencyManagement>
@@ -28,6 +29,11 @@
             <dependency>
                 <groupId>org.apache.hadoop</groupId>
                 <artifactId>hadoop-common</artifactId>
+                <version>2.6.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-mapreduce-client-core</artifactId>
                 <version>2.6.4</version>
             </dependency>
         </dependencies>
