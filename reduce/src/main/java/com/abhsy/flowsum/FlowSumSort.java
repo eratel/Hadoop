@@ -58,6 +58,7 @@ public class FlowSumSort {
 		 */
 		@Override
 		protected void cleanup(Context context) throws IOException, InterruptedException {
+			//进行全局循环，然后输出
 			super.cleanup(context);
 		}
 
