@@ -84,4 +84,12 @@ public class FlowBean implements Writable {
         return sumflow;
     }
 
+    @Override
+    public String toString() {
+        return "FlowBean{" +
+                "upflow=" + upflow +
+                ", downflow=" + downflow +
+                ", sumflow=" + sumflow +
+                '}';
+    }
 }

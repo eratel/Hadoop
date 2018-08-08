@@ -78,7 +78,7 @@ public class FlowSumApp {
 //        job.setInputFormatClass(TextInputFormat.class);
 //        job.setOutputFormatClass(TextOutputFormat.class);
         FileInputFormat.setInputPaths(job,new Path("/sumflow"));
-        FileOutputFormat.setOutputPath(job,new Path("/output6"));
+        FileOutputFormat.setOutputPath(job,new Path("/output"));
         /**
          * 等待客户端返回是否完成
          */
