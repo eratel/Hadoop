@@ -17,6 +17,7 @@ import java.io.IOException;
  * @program: abhsy-hadoop
  * @author: jikai.sun
  * @create: 2018-08-08
+ * Hadoop默认的排序算法，只会针对key值进行排序，按照字典顺序排序
  **/
 public class FlowSumApp {
 
