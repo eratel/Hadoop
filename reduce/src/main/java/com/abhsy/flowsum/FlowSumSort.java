@@ -48,8 +48,8 @@ public class FlowSumSort {
 	}
 
 	/**
-	 * 如果想实现一步做完排序，需要使用TREEMAP作缓存，在reduce的时候将所有数据缓存放到TREEMAP中
-	 * 进行排序，然后覆盖cleanup方法，通过cleanup进行输出
+	 * 如果想实现一步做完排序，需要使用TREEMAP作缓存，在reduce的时候将所有数据缓存放到TREEMAP中进行排序，
+	 * 然后覆盖cleanup方法，通过cleanup进行输出
 	 */
 	public static class FlowSumSortReducer extends Reducer<FlowBean, Text, Text, FlowBean>{
 
