@@ -26,7 +26,7 @@ public class FlowSumSort {
 		
 		FlowBean k = new FlowBean();
 		Text  v = new Text();
-		
+
 		@Override
 		protected void map(LongWritable key, Text value, Context context)
 				throws IOException, InterruptedException {
@@ -46,9 +46,21 @@ public class FlowSumSort {
 		}
 		
 	}
-	
+
+	/**
+	 * 如果想实现一步做完排序，需要使用TREEMAP作缓存，在reduce的时候将所有数据缓存放到TREEMAP中
+	 * 进行排序，然后覆盖cleanup方法，通过cleanup进行输出
+	 */
 	public static class FlowSumSortReducer extends Reducer<FlowBean, Text, Text, FlowBean>{
-		
+
+		/**
+		 * 通过全局的TreeMap进行全局的输出
+		 */
+		@Override
+		protected void cleanup(Context context) throws IOException, InterruptedException {
+			super.cleanup(context);
+		}
+
 		@Override
 		protected void reduce(FlowBean bean, Iterable<Text> PhoneNum, Context context)
 				throws IOException, InterruptedException {
