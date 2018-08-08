@@ -30,6 +30,7 @@ public class FlowBean implements WritableComparable<FlowBean> {
      * > 正数
      * < 负数
      *  =  0
+     *  为KEY时会进行排序
      */
     @Override
     public int compareTo(FlowBean o) {
