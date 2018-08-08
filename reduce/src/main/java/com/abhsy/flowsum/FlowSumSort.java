@@ -16,10 +16,11 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
 
 /**
- * 实现流量汇总并按照流量大小的倒序排序  前提：处理的数据是已经汇总的结果文件
- * @author AllenWoon
- *
- */
+ * @program: abhsy-hadoop
+ * @author: jikai.sun
+ * @create: 2018-08-08
+ * Hadoop默认的排序算法，只会针对key值进行排序，按照字典顺序排序
+ **/
 public class FlowSumSort {
 	
 	public static class FlowSumSortMapper extends Mapper<LongWritable, Text, FlowBean, Text>{
