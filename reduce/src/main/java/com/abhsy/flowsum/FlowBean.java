@@ -35,8 +35,8 @@ public class FlowBean implements WritableComparable<FlowBean> {
     public int compareTo(FlowBean o) {
         /**
          * 正常情况下实现compare方法，调用方法的值，跟参数进行比较，然后调用方法值减去参数的值，就是正常实现compareTo的方式。
-         * 例如 5.compare（3）  5-3 返回正数
-         * 实现倒序 只要反过来 3-5 得到负数
+         * 例如 5.compare（3）  5-3 返回正数  正序
+         * 实现倒序 只要反过来 3-5 得到负数  倒序
          */
         //倒序
         return (int) (o.getSumflow() - this.getSumflow());
