@@ -1,6 +1,6 @@
 package com.abhsy.flowsum;
 
-import org.apache.hadoop.io.Writable;
+import org.apache.hadoop.io.WritableComparable;
 
 import java.io.DataInput;
 import java.io.DataOutput;
@@ -14,8 +14,9 @@ import java.io.IOException;
 
 /**
  * 实现序列化
+ * implements  Writable
  */
-public class FlowBean implements Writable {
+public class FlowBean implements WritableComparable<FlowBean> {
 
     private long upflow;
 
@@ -23,6 +24,18 @@ public class FlowBean implements Writable {
 
     private long sumflow;
 
+    //排序
+
+    /**
+     * > 正数
+     * < 负数
+     *  =  0
+     */
+    @Override
+    public int compareTo(FlowBean o) {
+        //倒序
+        return (int) (o.getSumflow() - this.getSumflow());
+    }
 
     //序列化
     @Override
@@ -92,4 +105,6 @@ public class FlowBean implements Writable {
                 ", sumflow=" + sumflow +
                 '}';
     }
+
+
 }
