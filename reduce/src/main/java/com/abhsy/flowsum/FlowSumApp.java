@@ -79,6 +79,9 @@ public class FlowSumApp {
         job.setMapperClass(flowSumMapper.class);
         job.setReducerClass(flowSumReduce.class);
 
+        /**
+         * 添加分区逻辑，使用MapReduce所提供的并行架构的优势
+         */
         job.setPartitionerClass(ProviedPariti.class);
 
 //        如果跟最后输入类型相同可不配置
