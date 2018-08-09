@@ -31,7 +31,10 @@ public class WordCountDriver {
 //        job.setJar("/root/reduce.jar");
         job.setJarByClass(WordCountDriver.class);
         job.setMapperClass(WordCountMapper.class);
-        job.setReducerClass(WordCountReduce.class);
+//        job.setReducerClass(WordCountReduce.class);
+        //在数据拉取之前就做Reduce操作
+        // 对MAP操作进行局部聚合，提高网络IO操作，大量KV数据传送          读音【康版纳】
+        job.setCombinerClass(WordCountReduce.class);
         //添加MAP输入值的类型
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(IntWritable.class);
