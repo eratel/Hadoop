@@ -84,6 +84,7 @@ public class FlowSumApp {
          */
         job.setPartitionerClass(ProviedPariti.class);
         //分区为6个 0-5 是6个 -----不能小于自定义分区的个数
+        //设置【1】的话不存在分区，导致自定义分区失效. 默认分区为【1】
         job.setNumReduceTasks(6);
 //        如果跟最后输入类型相同可不配置
 //        job.setMapOutputKeyClass(Text.class);
