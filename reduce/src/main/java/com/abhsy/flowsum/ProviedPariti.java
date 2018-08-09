@@ -16,6 +16,10 @@ public class ProviedPariti extends Partitioner<Text,FlowBean> {
     static {
         map.put("135",0);
         map.put("136",1);
+        map.put("137",2);
+        map.put("138",3);
+        map.put("139",4);
+        map.put("140",5);
     }
 
     /**
