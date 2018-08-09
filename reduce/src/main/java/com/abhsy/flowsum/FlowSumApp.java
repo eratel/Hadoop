@@ -78,6 +78,9 @@ public class FlowSumApp {
         job.setJarByClass(FlowSumApp.class);
         job.setMapperClass(flowSumMapper.class);
         job.setReducerClass(flowSumReduce.class);
+
+        job.setPartitionerClass(ProviedPariti.class);
+
 //        如果跟最后输入类型相同可不配置
 //        job.setMapOutputKeyClass(Text.class);
 //        job.setMapOutputValueClass(FlowBean.class);
