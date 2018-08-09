@@ -83,7 +83,7 @@ public class FlowSumApp {
          * 添加分区逻辑，使用MapReduce所提供的并行架构的优势
          */
         job.setPartitionerClass(ProviedPariti.class);
-        //分区为6个 0-5 是6个
+        //分区为6个 0-5 是6个 -----不能小于自定义分区的个数
         job.setNumReduceTasks(6);
 //        如果跟最后输入类型相同可不配置
 //        job.setMapOutputKeyClass(Text.class);
