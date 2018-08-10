@@ -35,6 +35,12 @@ public class FlowSumApp {
          * ↑以上就是整个MapReduce过程
          */
         @Override
+        /**
+         * 也许你会好奇为什么会无缝调用map方法，我开始也很纠结。我看了源码就明白了，无非就是Mapper中run的方法调用了而已
+         * 然后将本类class传入给job调用，直接调用run方法就OK了。
+         * -----------------------------------------------------------------------------------------------------
+         * 后面经过看源码DelegatingMapper是通过反射做的。底层无非就是这些多点耐心罢了，戒骄戒躁。
+         */
         protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
             String line = value.toString();
             if(StringUtils.isNotBlank(value.toString())){
