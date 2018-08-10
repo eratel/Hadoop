@@ -38,6 +38,8 @@ public class WordCountDriver {
         //添加MAP输入值的类型
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(IntWritable.class);
+        //ReduceTask为3 会生成3个文件
+        job.setNumReduceTasks(3);
         //设置整个输出类型
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
