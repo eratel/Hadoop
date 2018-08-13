@@ -62,14 +62,12 @@ public class IndexStepOne {
 //        configuration.set("yarn.resourcemanager.hostname", "hadoop1");
 //        System.setProperty("HADOOP_USER_NAME", "root");
         Job job = Job.getInstance(configuration);
-        //告诉框架，我们的的程序所在jar包的位置
-//        job.setJar("/root/reduce.jar");
         job.setJarByClass(IndexStepOneMapper.class);
         job.setMapperClass(IndexStepOneMapper.class);
-//        job.setReducerClass(WordCountReduce.class);
+        job.setReducerClass(IndexStepOneReduce.class);
         //在数据拉取之前就做Reduce操作
         // 对MAP操作进行局部聚合，提高网络IO操作，大量KV数据传送          读音【康版纳】
-        job.setCombinerClass(IndexStepOneReduce.class);
+//        job.setCombinerClass(IndexStepOneReduce.class);
         //添加MAP输入值的类型
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(IntWritable.class);
