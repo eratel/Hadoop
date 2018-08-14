@@ -3,6 +3,7 @@ package com.abhsy.ordertopn;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
@@ -21,7 +22,7 @@ import java.io.IOException;
  **/
 public class OrderTonN {
 
-    public static class IndexStepOneMapper extends Mapper<LongWritable,Text,OrderBean,Text> {
+    public static class IndexStepOneMapper extends Mapper<LongWritable,Text,OrderBean,NullWritable> {
         OrderBean orderBean = new OrderBean();
         @Override
         protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
@@ -29,9 +30,11 @@ public class OrderTonN {
             String[] split = line.split(",");
             Double money = Double.parseDouble(split[2]);
             String tickno = split[0];
+            String id = split[1];
             orderBean.setMoney(money);
             orderBean.setOrderNo(tickno);
-            context.write(orderBean,new Text(split[0]));
+            orderBean.setId(split[1]);
+            context.write(orderBean,NullWritable.get());
         }
     }
 
@@ -54,7 +57,9 @@ public class OrderTonN {
         job.setReducerClass(IndexStepOneReduce.class);
         job.setMapOutputKeyClass(OrderBean.class);
         job.setMapOutputValueClass(Text.class);
-        job.setNumReduceTasks(1);
+        job.setNumReduceTasks(3);
+//        job.setGroupingComparatorClass(GroupingComparator.class);
+        job.setPartitionerClass(ItemIdPartitioner.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(OrderBean.class);
         job.setInputFormatClass(TextInputFormat.class);

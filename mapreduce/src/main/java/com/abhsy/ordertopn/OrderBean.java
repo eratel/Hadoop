@@ -14,6 +14,7 @@ import java.io.IOException;
 public class OrderBean implements WritableComparable<OrderBean> {
     private String orderNo;
     private Double money;
+    private String id;
 
     @Override
     public int compareTo(OrderBean o) {
@@ -51,6 +52,15 @@ public class OrderBean implements WritableComparable<OrderBean> {
     public String getOrderNo() {
 
         return orderNo;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+
+        return id;
     }
 
     public Double getMoney() {
