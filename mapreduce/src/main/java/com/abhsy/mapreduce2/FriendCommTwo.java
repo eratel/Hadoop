@@ -32,7 +32,7 @@ public class FriendCommTwo {
             //length -1 因为从下标开始
             for (int i = 0; i < persons.length -1;i ++){
                 // i + 1 必须要加i
-                for (int j = 1; j < persons.length - i ;j ++){
+                for (int j = i + 1; j < persons.length ;j ++){
                     context.write(new Text(persons[i]+"-"+persons[j]), new Text(friend));
                 }
             }
@@ -67,7 +67,7 @@ public class FriendCommTwo {
         job.setOutputFormatClass(TextOutputFormat.class);
         //设置处理文件路径  FileInputFormat要使用reduce包下面的
         FileInputFormat.setInputPaths(job,new Path("E:/技术栈/六期大数据/文档/就业班/04/作业题、案例数据/output"));
-        FileOutputFormat.setOutputPath(job,new Path("E:/技术栈/六期大数据/文档/就业班/04/作业题、案例数据/output1"));
+        FileOutputFormat.setOutputPath(job,new Path("E:/技术栈/六期大数据/文档/就业班/04/作业题、案例数据/output2"));
         boolean res = job.waitForCompletion(true);
         System.exit(res?0:1);
     }
