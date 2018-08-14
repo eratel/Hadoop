@@ -32,7 +32,7 @@ public class FriendCommTwo {
             //length -1 因为从下标开始
             for (int i = 0; i < persons.length -1;i ++){
                 // i + 1 必须要加i
-                for (int j = i + 1; j < persons.length ;j ++){
+                for (int j = 1; j < persons.length - i ;j ++){
                     context.write(new Text(persons[i]+"-"+persons[j]), new Text(friend));
                 }
             }
