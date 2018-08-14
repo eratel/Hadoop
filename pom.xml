@@ -12,6 +12,7 @@
     <modules>
         <module>hdfs</module>
         <module>reduce</module>
+        <module>mapreduce</module>
     </modules>
 
     <dependencyManagement>
