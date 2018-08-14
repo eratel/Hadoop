@@ -25,12 +25,14 @@ public class OrderBean implements WritableComparable<OrderBean> {
     public void write(DataOutput out) throws IOException {
         out.writeUTF(orderNo);
         out.writeDouble(money);
+        out.writeUTF(id);
     }
 
     @Override
     public void readFields(DataInput in) throws IOException {
         this.orderNo = in.readUTF();
         this.money = in.readDouble();
+        this.id = in.readUTF();
     }
 
     @Override
@@ -38,6 +40,7 @@ public class OrderBean implements WritableComparable<OrderBean> {
         return "OrderBean{" +
                 "orderNo='" + orderNo + '\'' +
                 ", money=" + money +
+                ", id='" + id + '\'' +
                 '}';
     }
 

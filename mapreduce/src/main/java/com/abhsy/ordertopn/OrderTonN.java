@@ -33,19 +33,16 @@ public class OrderTonN {
             String id = split[1];
             orderBean.setMoney(money);
             orderBean.setOrderNo(tickno);
-            orderBean.setId(split[1]);
+            orderBean.setId(id);
             context.write(orderBean,NullWritable.get());
         }
     }
 
 
-    public static class  IndexStepOneReduce extends Reducer<OrderBean,Text,Text,OrderBean>{
+    public static class  IndexStepOneReduce extends Reducer<OrderBean,NullWritable,OrderBean,NullWritable>{
         @Override
-        protected void reduce(OrderBean key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
-            for (Text text:
-            values) {
-                context.write(text,key);
-            }
+        protected void reduce(OrderBean key, Iterable<NullWritable> values, Context context) throws IOException, InterruptedException {
+            context.write(key,NullWritable.get());
         }
     }
 
@@ -56,14 +53,20 @@ public class OrderTonN {
         job.setMapperClass(IndexStepOneMapper.class);
         job.setReducerClass(IndexStepOneReduce.class);
         job.setMapOutputKeyClass(OrderBean.class);
-        job.setMapOutputValueClass(Text.class);
+        job.setMapOutputValueClass(NullWritable.class);
         job.setNumReduceTasks(3);
-//        job.setGroupingComparatorClass(GroupingComparator.class);
-        job.setPartitionerClass(ItemIdPartitioner.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(OrderBean.class);
         job.setInputFormatClass(TextInputFormat.class);
         job.setOutputFormatClass(TextOutputFormat.class);
+        /**
+         * 自定义分组，配置为对象id相同，就是为相同配合的对象进行合并。
+         */
+        job.setGroupingComparatorClass(GroupingComparator.class);
+        /**
+         * 自定义分区、不同的数据放在不同的分区
+         */
+        job.setPartitionerClass(ItemIdPartitioner.class);
         FileInputFormat.setInputPaths(job,new Path("E:/技术栈/六期大数据/文档/就业班/04/作业题、案例数据/3/orders.txt"));
         FileOutputFormat.setOutputPath(job,new Path("E:/技术栈/六期大数据/文档/就业班/04/作业题、案例数据/3/output"));
         boolean res = job.waitForCompletion(true);
