@@ -10,7 +10,7 @@ import java.util.concurrent.*;
 
 /**
  * Callable<Integer> 实现 Callable 接口。
- * 相较于实现 Runnable 接口的方式，方法可以有返回值，并且可以抛出异常。
+ * 相较于实现 Runnable 接口的方式，Callable 方法可以有返回值，并且可以抛出异常。
  * 执行 Callable 方式，需要 FutureTask 实现类的支持，用于接收运算结果。FutureTask 是 Future 接口的实现类。
  */
 public class TestCallable {
