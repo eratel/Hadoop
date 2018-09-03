@@ -1,4 +1,4 @@
-package com.abhsy;
+package com.abhsy.JUC;
 
 /**
  * @program: abhsy-hadoop
