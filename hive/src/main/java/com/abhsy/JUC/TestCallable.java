@@ -24,8 +24,6 @@ public class TestCallable {
         /**
          * executor.submit()可以执行 callable 和 Runnable
          */
-//        ExecutorService executor = Executors.newFixedThreadPool(3);
-//        executor.submit()
         //2.接收线程运算后的结果
         try {
             Integer sum = result.get();  //线程在运行的时候，FutureTask 的get方法并没有执行，而是在等待线程运行的结果。FutureTask 可用于 闭锁
