@@ -21,6 +21,7 @@ public class WordCountReduce extends Reducer<Text, IntWritable, Text, IntWritabl
     /**
      * key为map输出的单词
      * values为map输出的个数
+     * 得到以KEY为分组的，迭代器Values数据
      */
     @Override
     protected void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
